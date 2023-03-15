@@ -74,11 +74,15 @@ const VueHtmlToPaper = {
         win.document.close();
         win.focus();
         win.print();
-        setTimeout(function () {win.close();}, 1);
+        
+        if(!!localOptions && localOptions.autoClose === true){
+           setTimeout(function () {win.close();}, 10);   
+        }
+       
         cb();
       }, 1000);
         
-      return true;
+      return win;
     };
   },
 };
